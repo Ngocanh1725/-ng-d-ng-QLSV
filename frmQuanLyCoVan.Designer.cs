@@ -27,13 +27,6 @@ namespace Ứng_dụng_QLSV
         private Label lblGioiTinh;
         private Label lblTenCoVan;
         private Label lblMaCoVan;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem quảnLýChungToolStripMenuItem;
-        private ToolStripMenuItem quảnLýKhoaToolStripMenuItem;
-        private ToolStripMenuItem quảnLýLớpToolStripMenuItem;
-        private ToolStripMenuItem quảnLýSinhViênToolStripMenuItem;
-        private ToolStripMenuItem quảnLýCốVấnToolStripMenuItem;
-        private ToolStripMenuItem quảnLýĐiểmToolStripMenuItem1;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -74,7 +67,6 @@ namespace Ứng_dụng_QLSV
             this.lblGioiTinh = new System.Windows.Forms.Label();
             this.lblTenCoVan = new System.Windows.Forms.Label();
             this.lblMaCoVan = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +76,7 @@ namespace Ứng_dụng_QLSV
             this.quảnLýSinhViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýCốVấnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýĐiểmToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCoVan)).BeginInit();
             this.grpThongTin.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -337,20 +330,6 @@ namespace Ứng_dụng_QLSV
             this.lblMaCoVan.TabIndex = 0;
             this.lblMaCoVan.Text = "Mã Cố Vấn:";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hệThốngToolStripMenuItem,
-            this.quảnLýChungToolStripMenuItem,
-            this.quảnLýĐiểmToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(736, 24);
-            this.menuStrip1.TabIndex = 16;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // hệThốngToolStripMenuItem
             // 
             this.hệThốngToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -421,6 +400,20 @@ namespace Ứng_dụng_QLSV
             this.quảnLýĐiểmToolStripMenuItem1.Text = "Quản lý điểm";
             this.quảnLýĐiểmToolStripMenuItem1.Click += new System.EventHandler(this.quảnLýĐiểmToolStripMenuItem_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hệThốngToolStripMenuItem,
+            this.quảnLýChungToolStripMenuItem,
+            this.quảnLýĐiểmToolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(736, 24);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // frmQuanLyCoVan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,5 +448,12 @@ namespace Ứng_dụng_QLSV
         private ToolStripMenuItem hệThốngToolStripMenuItem;
         private ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
         private ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private ToolStripMenuItem quảnLýChungToolStripMenuItem;
+        private ToolStripMenuItem quảnLýKhoaToolStripMenuItem;
+        private ToolStripMenuItem quảnLýLớpToolStripMenuItem;
+        private ToolStripMenuItem quảnLýSinhViênToolStripMenuItem;
+        private ToolStripMenuItem quảnLýCốVấnToolStripMenuItem;
+        private ToolStripMenuItem quảnLýĐiểmToolStripMenuItem1;
+        private MenuStrip menuStrip1;
     }
 }

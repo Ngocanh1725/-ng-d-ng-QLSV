@@ -34,6 +34,19 @@ namespace Ứng_dụng_QLSV
         private ToolStripMenuItem quảnLýCốVấnToolStripMenuItem;
         private ToolStripMenuItem quảnLýĐiểmToolStripMenuItem1;
 
+        // ================= SỬA LỖI TẠI ĐÂY =================
+        // Đổi tên biến của cột từ 'Name' thành 'colXepLoai' để tránh xung đột
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn colXepLoai; // Đã đổi tên
+        private ToolStripMenuItem hệThốngToolStripMenuItem;
+        private ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
+        private ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        // ======================================================
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -66,12 +79,6 @@ namespace Ứng_dụng_QLSV
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvDiem = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +89,16 @@ namespace Ứng_dụng_QLSV
             this.quảnLýSinhViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýCốVấnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýĐiểmToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+
+            // ================= SỬA LỖI TẠI ĐÂY =================
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colXepLoai = new System.Windows.Forms.DataGridViewTextBoxColumn(); // Đã đổi tên
+            // ======================================================
+
             this.grpNhapDiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPTramThi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPTramLop)).BeginInit();
@@ -270,17 +287,21 @@ namespace Ứng_dụng_QLSV
             // 
             // dgvDiem
             // 
-            this.dgvDiem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvDiem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            // ================= SỬA LỖI TẠI ĐÂY =================
             this.dgvDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column3,
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Name});
+            this.colXepLoai}); // Đã đổi tên
+            // ======================================================
+
             this.dgvDiem.Location = new System.Drawing.Point(285, 81);
             this.dgvDiem.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDiem.Name = "dgvDiem";
@@ -312,11 +333,15 @@ namespace Ứng_dụng_QLSV
             // 
             this.Column6.HeaderText = "Điểm trung bình";
             this.Column6.Name = "Column6";
+
+            // ================= SỬA LỖI TẠI ĐÂY =================
             // 
-            // Name
+            // colXepLoai
             // 
-            this.Name.HeaderText = "Xếp loại";
-            this.Name.Name = "Name";
+            this.colXepLoai.HeaderText = "Xếp loại";
+            this.colXepLoai.Name = "colXepLoai"; // Thuộc tính Name của cột có thể giữ nguyên, chỉ cần tên biến khác
+            // ======================================================
+
             // 
             // menuStrip1
             // 
@@ -415,6 +440,7 @@ namespace Ứng_dụng_QLSV
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "frmQuanLyDiem";
             this.Text = "Bảng Điểm Sinh Viên";
             this.grpNhapDiem.ResumeLayout(false);
             this.grpNhapDiem.PerformLayout();
@@ -427,15 +453,5 @@ namespace Ứng_dụng_QLSV
             this.PerformLayout();
 
         }
-
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Name;
-        private ToolStripMenuItem hệThốngToolStripMenuItem;
-        private ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
-        private ToolStripMenuItem đăngXuấtToolStripMenuItem;
     }
 }

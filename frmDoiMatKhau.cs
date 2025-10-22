@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ứng_dụng_QLSV.Databases;
 
 namespace Ứng_dụng_QLSV
 {
@@ -18,44 +12,69 @@ namespace Ứng_dụng_QLSV
             InitializeComponent();
         }
 
+        private void frmDoiMatKhau_Load(object sender, EventArgs e)
+        {
+            // Tự động điền tên đăng nhập và không cho sửa
+            if (!string.IsNullOrEmpty(CurrentUser.Username))
+            {
+                txtUsername.Text = CurrentUser.Username;
+                txtUsername.ReadOnly = true;
+            }
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string username = "admin";
             string newPassword = txtNewPassword.Text;
             string confirmPassword = txtXacNhanMatKhau.Text;
-            if (string.Equals(newPassword, confirmPassword) == true)
+
+            if (string.IsNullOrWhiteSpace(newPassword))
             {
-                string connectionString = @"Data Source=DESKTOP-5H6J6H1\SQLEXPRESS;Initial Catalog=QLSV;Integrated Security=True";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                MessageBox.Show("Mật khẩu không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                MessageBox.Show("Mật khẩu mới và xác nhận mật khẩu không khớp.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Mã hóa mật khẩu mới
+            string newHashedPassword = PasswordHelper.HashPassword(newPassword);
+
+            try
+            {
+                using (SqlConnection conn = DBHelper.GetConnection())
                 {
-                    connection.Open();
-                    string query = "UPDATE Users SET Password = @Password WHERE Username = @Username";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    conn.Open();
+                    string query = "UPDATE Users SET PasswordHash = @PasswordHash WHERE Username = @Username";
+                    using (SqlCommand command = new SqlCommand(query, conn))
                     {
-                        command.Parameters.AddWithValue("@Password", newPassword);
-                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@PasswordHash", newHashedPassword);
+                        command.Parameters.AddWithValue("@Username", CurrentUser.Username);
+
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Đổi mật khẩu thành công!");
+                            MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Đổi mật khẩu thất bại. Vui lòng thử lại.");
+                            MessageBox.Show("Không tìm thấy người dùng để cập nhật.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Mật khẩu mới và xác nhận mật khẩu không khớp. Vui lòng thử lại.");
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void frmDoiMatKhau_Load(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

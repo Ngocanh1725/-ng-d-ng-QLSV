@@ -26,34 +26,49 @@ namespace QuanLySinhVien
 
             try
             {
-                using (SqlConnection conn = DBHelper.GetConnection())
+                // 1. Sử dụng UserRepo để kiểm tra đăng nhập và lấy Role
+                UserRepo userRepo = new UserRepo();
+                string role = userRepo.validateLogin(username, password);
+
+                // 2. Kiểm tra kết quả
+                if (!string.IsNullOrEmpty(role))
                 {
-                    conn.Open();
-                    string query = "SELECT COUNT(1) FROM taikhoan WHERE tendangnhap = @username AND matkhau = @password";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password); // Lưu ý: Mật khẩu nên được mã hóa trong thực tế
+                    // Đăng nhập thành công
+                    // 3. Hiển thị thông báo thành công với Role
+                    MessageBox.Show($"Đăng nhập thành công - Role: {role}",
+                                    "Đăng nhập thành công",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
 
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                    if (count == 1)
-                    {
-                        // Đăng nhập thành công
-                        this.Hide();
-                        frmMain mainForm = new frmMain();
-                        mainForm.Show();
-                    }
-                    else
-                    {
-                        // Đăng nhập thất bại
-                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    this.Hide();
+                    // 4. Truyền Role cho frmMain
+                    frmMain mainForm = new frmMain(role);
+                    mainForm.Show();
+                }
+                else
+                {
+                    // Đăng nhập thất bại
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Thêm xử lý lỗi nếu cột 'Role' không tồn tại trong CSDL
+                if (ex.Message.ToLower().Contains("invalid column name 'role'"))
+                {
+                    MessageBox.Show("Lỗi: Không tìm thấy cột 'Role' trong bảng 'Users'. Vui lòng kiểm tra CSDL.", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                // Xử lý lỗi nếu tên bảng 'Users' không đúng
+                else if (ex.Message.ToLower().Contains("invalid object name 'users'"))
+                {
+                    MessageBox.Show("Lỗi: Không tìm thấy bảng 'Users'. Vui lòng kiểm tra CSDL.", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
 }
+

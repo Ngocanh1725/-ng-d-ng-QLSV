@@ -18,13 +18,6 @@ namespace Ứng_dụng_QLSV
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvKhoa;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem quảnLýChungToolStripMenuItem;
-        private ToolStripMenuItem quảnLýKhoaToolStripMenuItem;
-        private ToolStripMenuItem quảnLýLớpToolStripMenuItem;
-        private ToolStripMenuItem quảnLýSinhViênToolStripMenuItem;
-        private ToolStripMenuItem quảnLýCốVấnToolStripMenuItem;
-        private ToolStripMenuItem quảnLýĐiểmToolStripMenuItem1;
         private DataGridViewCellEventHandler dgvKhoa_CellClick;
 
 
@@ -57,7 +50,6 @@ namespace Ứng_dụng_QLSV
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +59,7 @@ namespace Ứng_dụng_QLSV
             this.quảnLýSinhViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýCốVấnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýĐiểmToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.grpThongTin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhoa)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -207,20 +200,6 @@ namespace Ứng_dụng_QLSV
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hệThốngToolStripMenuItem,
-            this.quảnLýChungToolStripMenuItem,
-            this.quảnLýĐiểmToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(662, 24);
-            this.menuStrip1.TabIndex = 7;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // hệThốngToolStripMenuItem
             // 
             this.hệThốngToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -290,6 +269,20 @@ namespace Ứng_dụng_QLSV
             this.quảnLýĐiểmToolStripMenuItem1.Text = "Quản lý điểm";
             this.quảnLýĐiểmToolStripMenuItem1.Click += new System.EventHandler(this.quảnLýĐiểmToolStripMenuItem_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hệThốngToolStripMenuItem,
+            this.quảnLýChungToolStripMenuItem,
+            this.quảnLýĐiểmToolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(662, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // frmQuanLyKhoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,5 +315,12 @@ namespace Ứng_dụng_QLSV
         private ToolStripMenuItem hệThốngToolStripMenuItem;
         private ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
         private ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private ToolStripMenuItem quảnLýChungToolStripMenuItem;
+        private ToolStripMenuItem quảnLýKhoaToolStripMenuItem;
+        private ToolStripMenuItem quảnLýLớpToolStripMenuItem;
+        private ToolStripMenuItem quảnLýSinhViênToolStripMenuItem;
+        private ToolStripMenuItem quảnLýCốVấnToolStripMenuItem;
+        private ToolStripMenuItem quảnLýĐiểmToolStripMenuItem1;
+        private MenuStrip menuStrip1;
     }
 }

@@ -165,8 +165,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DATABASE.cs" />
+    <Compile Include="Database\CurrentUser.cs" />
     <Compile Include="Database\DBHelper.cs" />
+    <Compile Include="Database\PassswordHelper.cs" />
     <Compile Include="Database\UserRepo.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -223,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyCoVan.resx">
       <DependentUpon>frmQuanLyCoVan.cs</DependentUpon>
